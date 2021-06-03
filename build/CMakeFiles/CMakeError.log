@@ -1,48 +1,16 @@
-Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
-Change Dir: /home/gian/dev/game-engine/vulkan-demo/build/CMakeFiles/CMakeTmp
+Determining if the include file pthread.h exists failed with the following output:
+Change Dir: D:/dev/projects/vulkan-demo/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/ninja cmTC_5162d && [1/2] Building C object CMakeFiles/cmTC_5162d.dir/src.c.o
-[2/2] Linking C executable cmTC_5162d
-FAILED: cmTC_5162d 
-: && /bin/x86_64-linux-gnu-gcc-9 -DCMAKE_HAVE_LIBC_PTHREAD  -rdynamic CMakeFiles/cmTC_5162d.dir/src.c.o  -o cmTC_5162d   && :
-/usr/bin/ld: CMakeFiles/cmTC_5162d.dir/src.c.o: in function `main':
-src.c:(.text+0x46): undefined reference to `pthread_create'
-/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
-/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
-collect2: error: ld returned 1 exit status
-ninja: build stopped: subcommand failed.
-
-
-Source file was:
-#include <pthread.h>
-
-void* test_func(void* data)
-{
-  return data;
-}
-
-int main(void)
-{
-  pthread_t thread;
-  pthread_create(&thread, NULL, test_func, NULL);
-  pthread_detach(thread);
-  pthread_join(thread, NULL);
-  pthread_atfork(NULL, NULL, NULL);
-  pthread_exit(NULL);
-
-  return 0;
-}
-
-Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/gian/dev/game-engine/vulkan-demo/build/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/usr/bin/ninja cmTC_2598f && [1/2] Building C object CMakeFiles/cmTC_2598f.dir/CheckFunctionExists.c.o
-[2/2] Linking C executable cmTC_2598f
-FAILED: cmTC_2598f 
-: && /bin/x86_64-linux-gnu-gcc-9 -DCHECK_FUNCTION_EXISTS=pthread_create  -rdynamic CMakeFiles/cmTC_2598f.dir/CheckFunctionExists.c.o  -o cmTC_2598f  -lpthreads && :
-/usr/bin/ld: cannot find -lpthreads
-collect2: error: ld returned 1 exit status
-ninja: build stopped: subcommand failed.
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin/MSBuild.exe cmTC_ebe3d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=15.0 /v:m && Microsoft (R) Build Engine version 15.9.21+g9802d43bc3 for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Microsoft (R) C/C++ Optimizing Compiler Version 19.16.27045 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  CheckIncludeFile.c
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ebe3d.dir\Debug\\" /Fd"cmTC_ebe3d.dir\Debug\vc141.pdb" /Gd /TC /errorReport:queue "D:\dev\projects\vulkan-demo\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  
+D:\dev\projects\vulkan-demo\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c(1): fatal error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\dev\projects\vulkan-demo\build\CMakeFiles\CMakeTmp\cmTC_ebe3d.vcxproj]
 
 
 

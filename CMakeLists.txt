@@ -3,20 +3,24 @@ project(vulkan-demo
     DESCRIPTION "Just me learning some vulkan"
 )
 
+set(CMAKE_CXX_STANDARD 17)
+
 add_subdirectory(lib/glfw)
 add_subdirectory(lib/glm)
 
-set(SOURCES 
-    src/samp.cpp
+set(VULKAN_DEMO_SOURCES 
+    src/Application.cpp
 )
 
-add_executable(vulkan-demo ${SOURCES})
+add_executable(vulkan-demo ${VULKAN_DEMO_SOURCES})
 
 find_package(Vulkan REQUIRED)
 target_include_directories(vulkan-demo PUBLIC ${Vulkan_INCLUDE_DIRS})
 
+set(OUTPUT_DIR "${CMAKE_SOURCE_DIR}/bin/${PROJECT_NAME}/${CMAKE_BUILD_TYPE}")
+
 set_target_properties(vulkan-demo PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY    "${CMAKE_SOURCE_DIR}/bin"
+    RUNTIME_OUTPUT_DIRECTORY    ${OUTPUT_DIR}
 )
 
 target_include_directories(vulkan-demo 
@@ -24,7 +28,6 @@ target_include_directories(vulkan-demo
 )
 
 target_link_libraries(vulkan-demo
-    PUBLIC      -lstdc++
     PRIVATE     glfw
     PRIVATE     glm
     PRIVATE     Vulkan::Vulkan
