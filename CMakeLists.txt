@@ -9,7 +9,9 @@ add_subdirectory(lib/glfw)
 add_subdirectory(lib/glm)
 
 set(VULKAN_DEMO_SOURCES 
-    src/Application.cpp
+    src/main.cpp
+	src/v_demo_window.cpp
+	src/application.cpp
 )
 
 add_executable(vulkan-demo ${VULKAN_DEMO_SOURCES})
