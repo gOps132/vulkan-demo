@@ -17,10 +17,12 @@ v_demo_window::~v_demo_window()
 	glfwDestroyWindow(m_window);
 	glfwTerminate();
 }
+
 bool v_demo_window::window_should_close()
 {
 	return glfwWindowShouldClose(m_window);
 }
+
 void v_demo_window::init_window()
 {
 	glfwInit();
