@@ -1,9 +1,9 @@
-#include "v_demo_window.hpp"
+#include "vd_window.h"
 
 namespace vd {
-v_demo_window::v_demo_window() { init_window(); }
-v_demo_window::v_demo_window(uint32_t p_width, uint32_t p_height,
-							 std::string p_window_name)
+vd_window::vd_window() { init_window(); }
+vd_window::vd_window(uint32_t p_width, uint32_t p_height,
+					 std::string p_window_name)
 {
 	m_window_props.m_width = p_width;
 	m_window_props.m_height = p_height;
@@ -12,18 +12,18 @@ v_demo_window::v_demo_window(uint32_t p_width, uint32_t p_height,
 	init_window();
 }
 
-v_demo_window::~v_demo_window()
+vd_window::~vd_window()
 {
 	glfwDestroyWindow(m_window);
 	glfwTerminate();
 }
 
-bool v_demo_window::window_should_close()
+bool vd_window::window_should_close()
 {
 	return glfwWindowShouldClose(m_window);
 }
 
-void v_demo_window::init_window()
+void vd_window::init_window()
 {
 	glfwInit();
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);

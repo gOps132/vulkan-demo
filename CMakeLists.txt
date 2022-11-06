@@ -12,7 +12,8 @@ find_package(Vulkan REQUIRED COMPONENTS glslc)
 
 set(VULKAN_DEMO_SOURCES 
     src/main.cpp
-	src/v_demo_window.cpp
+	src/vd_window.cpp
+	src/vd_pipeline.cpp
 	src/application.cpp
 )
 
@@ -49,9 +50,6 @@ message("SHADERS: ${SHADERS}")
 function(compile_shader NAME)
 	message("COMPILE_SHADER RUNNING: ${NAME}")
 	message("COMMAND: ${Vulkan_GLSLC_EXECUTABLE} ${SHADER_SOURCE_DIR}/${NAME} -o ${SHADER_BINARY_DIR}/${NAME}.spv")
-    # create a variable of all compiled shader file names, for add_custom_target
-    set(SPV_FILES ${SPV_FILES} ${SHADER_BINARY_DIR}/${NAME}.spv PARENT_SCOPE)
-
     add_custom_command(TARGET vulkan-demo PRE_BUILD
             COMMAND ${Vulkan_GLSLC_EXECUTABLE} ${SHADER_SOURCE_DIR}/${NAME} -o ${SHADER_BINARY_DIR}/${NAME}.spv
             WORKING_DIRECTORY ${SHADER_SOURCE_DIR}
@@ -74,9 +72,9 @@ set_target_properties(vulkan-demo PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY    ${OUTPUT_DIR}
 )
 
-target_include_directories(vulkan-demo 
-    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
+# target_include_directories(vulkan-demo 
+#     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include
+# )
 
 target_link_libraries(vulkan-demo
     PRIVATE     glfw

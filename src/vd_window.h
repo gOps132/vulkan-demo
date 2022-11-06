@@ -15,22 +15,21 @@ public:
 	std::string m_window_name = "Vulkan Demo";
 } window_default_props;
 
-class v_demo_window {
+class vd_window {
 private:
 	GLFWwindow *m_window;
 	window_default_props m_window_props;
 	void init_window();
 
 public:
-	v_demo_window();
-	v_demo_window(uint32_t p_width, uint32_t p_height,
-				  std::string p_window_name);
+	vd_window();
+	vd_window(uint32_t p_width, uint32_t p_height, std::string p_window_name);
 
 	// no copy
-	v_demo_window(const v_demo_window &) = delete;
-	v_demo_window &operator=(const v_demo_window) = delete;
+	vd_window(const vd_window &) = delete;
+	vd_window &operator=(const vd_window) = delete;
 
-	~v_demo_window();
+	~vd_window();
 
 	bool window_should_close();
 };
