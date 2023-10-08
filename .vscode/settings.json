@@ -113,6 +113,11 @@
 		"xstring": "cpp",
 		"xtr1common": "cpp",
 		"xutility": "cpp",
-		"xtree": "cpp"
+		"xtree": "cpp",
+		"charconv": "cpp",
+		"compare": "cpp",
+		"concepts": "cpp",
+		"format": "cpp",
+		"stop_token": "cpp"
 	},
 }

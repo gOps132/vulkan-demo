@@ -8,12 +8,14 @@ set(CMAKE_CXX_STANDARD 17)
 add_subdirectory(lib/glfw)
 add_subdirectory(lib/glm)
 
+set(ENV{VULKAN_SDK} "c:/VulkanSDK/1.2.176.1")
 find_package(Vulkan REQUIRED COMPONENTS glslc)
 
 set(VULKAN_DEMO_SOURCES 
     src/main.cpp
 	src/vd_window.cpp
 	src/vd_pipeline.cpp
+	src/vd_instance.cpp
 	src/application.cpp
 )
 

@@ -2,15 +2,18 @@
 #define __APPLICATION_H__
 
 #include "vd_window.h"
+#include "vd_instance.h"
 #include "vd_pipeline.h"
 
 namespace vd {
 class Application {
 public:
+	Application() {}
+
 	void run();
 
-private:
 	vd_window m_application_window;
+	vd_instance m_instance;
 	vd_pipeline m_vd_pipeline{"shaders/example_shader.vert.spv",
 							  "shaders/example_shader.frag.spv"};
 };
