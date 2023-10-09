@@ -8,14 +8,14 @@
 namespace vd {
 class Application {
 public:
-	Application() {}
-
+	Application();
 	void run();
 
 	vd_window m_application_window;
-	vd_instance m_instance;
-	vd_pipeline m_vd_pipeline{"shaders/example_shader.vert.spv",
-							  "shaders/example_shader.frag.spv"};
+	vd_pipeline m_vd_pipeline{	"shaders/example_shader.vert.spv",
+								"shaders/example_shader.frag.spv" };
+
+	static vk::Instance s_instance;
 };
 
 } // namespace vd

@@ -20,9 +20,10 @@ class vd_window {
 private:
 	GLFWwindow *m_window;
 	window_default_props m_window_props;
-	void init_window();
 
 public:
+	void init_window();
+
 	vd_window();
 	vd_window(uint32_t p_width, uint32_t p_height, std::string p_window_name);
 

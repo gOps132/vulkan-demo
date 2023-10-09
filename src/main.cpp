@@ -6,7 +6,7 @@
 
 int main()
 {
-	vd::Application app{};
+	vd::Application app;
 
 	try {
 		app.run();

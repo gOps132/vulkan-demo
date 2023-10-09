@@ -5,8 +5,13 @@ project(vulkan-demo
 
 set(CMAKE_CXX_STANDARD 17)
 
+set(ENABLE_CLANG_TIDY           ON)
+set(ENBALE_CPPCHECK             ON)
+set(ENABLE_INCLUDE_WHAT_YOU_USE ON)
+
 add_subdirectory(lib/glfw)
 add_subdirectory(lib/glm)
+add_subdirectory(lib/spdlog)
 
 set(ENV{VULKAN_SDK} "c:/VulkanSDK/1.2.176.1")
 find_package(Vulkan REQUIRED COMPONENTS glslc)
@@ -17,6 +22,8 @@ set(VULKAN_DEMO_SOURCES
 	src/vd_pipeline.cpp
 	src/vd_instance.cpp
 	src/application.cpp
+
+	src/Log.cpp
 )
 
 set(SHADER_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/shaders)
@@ -80,5 +87,6 @@ set_target_properties(vulkan-demo PROPERTIES
 target_link_libraries(vulkan-demo
     PRIVATE     glfw
     PRIVATE     glm
+	PRIVATE		spdlog
     PRIVATE     Vulkan::Vulkan
 )

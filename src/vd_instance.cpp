@@ -3,21 +3,10 @@
 #include <iostream>
 #include <vector>
 
-#include <GLFW/glfw3.h>
-#include <vulkan/vulkan.hpp>
-
+#include "Log.h"
 namespace vd
 {
-	vd_instance::vd_instance()
-	{
-		create_instance(1, "Vulkan Demo");
-	}
-		
-	vd_instance::~vd_instance()
-	{
-	}
-	
-	void vd_instance::create_instance(
+	vk::Instance create_instance(
 		bool p_debug,
 		const char* p_application_name
 	)
@@ -48,7 +37,6 @@ namespace vd
 		/**
 		 * Declare Application Info
 		*/
-
 		vk::ApplicationInfo appInfo = vk::ApplicationInfo(
 			p_application_name,
 			version,
@@ -76,7 +64,39 @@ namespace vd
 			}
 		}
 		
+		/** 
+		 *	now that we got the info that the application needs we need to create info
+		 *	VULKAN_HPP_CONSTEXPR InstanceCreateInfo( VULKAN_HPP_NAMESPACE::InstanceCreateFlags     flags_                 = {},
+                const VULKAN_HPP_NAMESPACE::ApplicationInfo * pApplicationInfo_      = {},
+                uint32_t                                      enabledLayerCount_     = {},
+                const char * const *                          ppEnabledLayerNames_   = {},
+                uint32_t                                      enabledExtensionCount_ = {},
+                const char * const * ppEnabledExtensionNames_ = {} ) VULKAN_HPP_NOEXCEPT
+		*/
+		vk::InstanceCreateInfo create_info = vk::InstanceCreateInfo(
+			vk::InstanceCreateFlags(),
+			&appInfo,
+			0, nullptr, // enabled layers
+			static_cast<uint32_t>(extensions.size()),
+			extensions.data() // enabled extensions
+		);
+
+		/**
+		 *     createInstance( const InstanceCreateInfo &          	createInfo,
+		 *			Optional<const AllocationCallbacks> 			allocator,
+		 *			Dispatch const &                    			d = ::vk::getDispatchedLoaderStatic()
+		 *		)
+		*/
+		try {
+			return vk::createInstance(create_info);
+		}
+		catch (vk::SystemError err) {
+			if (p_debug) {
+				std::cout << "Failed to create Instance \n";
+			}
+			return nullptr;
+		}
+		return nullptr;
 	}
 
 } // namespace vd
-

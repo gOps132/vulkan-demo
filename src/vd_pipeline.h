@@ -7,6 +7,7 @@
 namespace vd {
 class vd_pipeline {
 public:
+	vd_pipeline() {}
 	vd_pipeline(const std::string &p_vert_filepath,
 				const std::string &p_frag_filepath);
 

@@ -118,6 +118,8 @@
 		"compare": "cpp",
 		"concepts": "cpp",
 		"format": "cpp",
-		"stop_token": "cpp"
+		"stop_token": "cpp",
+		"forward_list": "cpp",
+		"span": "cpp"
 	},
 }
