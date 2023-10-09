@@ -9,7 +9,8 @@ vk::Instance Application::s_instance = nullptr;
 
 Application::Application() 
 {
-	std::cout << "creating application \n";
+	Log::init("Vulkan Demo");
+	VD_INFO("Creating Application");
 	s_instance = create_instance(true, "Vulkan Demo");	
 }
 

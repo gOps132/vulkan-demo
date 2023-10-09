@@ -14,13 +14,13 @@ namespace vd
 		uint32_t version{0};
 
 		if (p_debug) {
-			std::cout << "Making an Instance.. \n";
+			VD_INFO("Making Instance...");
 			vkEnumerateInstanceVersion(&version);
-			std::cout << "System can supoprt vulkan Variant: "
-				<<  VK_API_VERSION_VARIANT(version)
-				<< ", Major: " << VK_API_VERSION_MAJOR(version)
-				<< ", Minor: " << VK_API_VERSION_MINOR(version)
-				<< ", Patch: " << VK_API_VERSION_PATCH(version) << "\n";
+			VD_INFO("System can supoprt vulkan Variant: {0}, Major: {1}, Minor: {2}, Patch: {3}",
+				VK_API_VERSION_VARIANT(version),
+				VK_API_VERSION_MAJOR(version),
+				VK_API_VERSION_MINOR(version),
+				VK_API_VERSION_PATCH(version));
 		}
 
 		/**
